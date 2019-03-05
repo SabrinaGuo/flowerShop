@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>繫縭花藝</title>
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/vegas.min.css">
+    <link rel="stylesheet" href="css/jquery.vnm.confettiButton.css">
+    <style>
+        @font-face {
+            font-family: "simsun.ttc";
+            src: url(font/simsun.ttc);
+        }
+
+        body {
+            font-family: "微軟正黑體";
+            margin: 0;
+            padding: 0;
+        }
+
+        .cover {
+            background: rgba(0, 0, 81, .5);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            /* flex-wrap: wrap; */
+
+        }
+
+        .text {
+            color: azure;
+            text-align: center;
+            letter-spacing: 1rem;
+            margin: 0;
+
+        }
+
+        .cover h1 {
+            font-size: 6rem;
+            font-family: "simsun.ttc";
+            margin-bottom: 2rem;
+
+        }
+
+        .cover h3 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .cover a {
+            text-decoration: none;
+            display: block;
+            font-size: 3rem;
+        }
+
+        .wrapper {
+            max-width: 100%;
+            height: 100vh;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media screen and (max-width:768px) {
+
+            .cover h1 {
+                font-size: 4rem;
+            }
+
+            .cover h3 {
+                font-size: 2rem;
+            }
+
+            .cover a {
+                font-size: 2rem;
+            }
+
+            .wrapper {
+                max-width: 100%;
+                height: 100vh;
+                margin: 0 auto;
+                position: relative;
+            }
+
+        }
+
+        @media screen and (max-width:576px) {
+
+            .cover h1 {
+                font-size: 3rem;
+            }
+
+            .cover h3 {
+                font-size: 1rem;
+            }
+
+            .cover a {
+                font-size: 1rem;
+            }
+
+            .wrapper {
+                max-width: 100%;
+                height: 100vh;
+                margin: 0 auto;
+                position: relative;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="wrapper">
+
+        <div class="cover">
+            <h3 class="text animated flipInY delay-.5s">Welcome</h3>
+            <h1 class=" text animated flipInY delay-.8s">繫 縭 花 藝</h1>
+            <a class="btn text animated flipInY delay-.5s" id="enter" href="home.html">...Enter...</a>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <script src="js/vegas.min.js"></script>
+    <script>
+        $(".wrapper").vegas({
+            delay: 1700,
+            timer: false,
+            transition: 'fade',
+            slides: [
+                { src: "images/040.jpg" },
+                { src: "images/024.jpeg" },
+                { src: "images/022.jpg" },
+                { src: "images/001.jpg" }
+            ]
+        });
+
+    </script>
+    <script src="js/jquery.vnm.confettiButton.js"></script>
+    <script>
+        $(function () {
+
+            $('.btn').confettiButton();
+
+
+        });
+        $('.btn').confettiButton({
+
+            // the number of particles
+            num: 30,
+
+            // an array of colos
+            colorArray: ['#FF5566', '#FFFFFF', '#F1C40F', '#2EBFF6', '#2ECC71'],
+
+            // min/max distances
+            minX: 5,
+            minY: 5,
+            maxX: 300,
+            maxY: 300,
+
+            // min/max scale levels
+            minScale: 50,
+            maxScale: 150,
+
+            // animation speed
+            speed: 1,
+
+            // rotate the particles
+            rotation: true,
+
+            // appears on a hover event
+            hoverOnly: true,
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新娘捧花系列</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微軟正黑體";
+        }
+
+        @font-face {
+            font-family: "simsun.ttc";
+            src: url(font/simsun.ttc);
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 960px;
+        }
+
+        .textalign {
+            text-align: center;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .po-re {
+            position: relative;
+        }
+
+        .po-ab {
+            position: absolute;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+        .d-block{
+            display: block;
+        }
+        .d-none{
+            display: none;
+        }
+
+        /*--header-----------------------------------*/
+        header {
+            height: 50px;
+        }
+
+        header li.active {
+            background: #000051;
+
+        }
+
+        header li.active a {
+            color: white;
+        }
+
+        header figure {
+            width: 50px;
+            height: 50px;
+            margin: 0;
+            padding: 0;
+        }
+
+        header figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* header h1 {
+            margin: 0;
+            line-height: 50px;
+            font-size: 1.5rem;
+            color: #000051;
+            font-family: "simsun.ttc";
+        } */
+        header h1 {
+            margin: 0;
+            padding: 0;
+            height: 50px;
+            overflow: hidden;
+            width: 100px;
+        }
+
+        header h1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        header ul {
+            right: 0;
+        }
+
+        header ul li {
+            display: flex;
+            align-items: center;
+            width: 80px;
+            height: 50px;
+            justify-content: center;
+        }
+
+        header ul li a {
+            text-decoration: none;
+            color: #000051;
+        }
+
+        header ul li:hover {
+            background: #000051;
+        }
+
+        header ul li:hover a {
+            color: white;
+        }
+
+        .submeun {
+            width: 100%;
+            position: absolute;
+            background: #000051;
+            transition: .2s;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            top: 50px;
+            z-index: 99;
+        }
+
+        header li:hover .submeun {
+            opacity: 1;
+            max-height: 600px;
+            background: #4747b6;
+        }
+
+        .submeun li {
+            font-size: .8rem;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+        .deckHidden{
+            display: none;
+        }
+@media screen and (max-width:768px){
+    .mobContainer{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .mobHidden{
+        display: none;
+    }
+    .deckHidden{
+        display: block;
+    }
+    /* .deckHidden .d-flex{
+        justify-content: center;
+    } */
+    .deckHidden figure{
+        height: 10%;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    .deckHidden figure img{
+        width: 50%;
+        height: 50%;
+        object-fit: cover;
+    }
+    .mobNav{
+        justify-content: space-between;
+        align-items: center;
+    }
+    .mobButton{
+        width: 50px;
+        height: 50px;
+        background: #000051;
+        border: none;
+        border-radius: 5px;
+        margin-right: 10px;
+
+    }
+    .btn-fas{
+        color: white;
+        font-size:2rem;
+    }
+    .mobContainer{
+        z-index: 9999;
+        display: none;
+    }
+    .mobMeun{
+        background: #000051;
+        width: 100%;
+    }
+    .mobMeun li{
+        line-height: 3rem;
+        text-align: center;
+        border-bottom: 1px solid white;
+    }
+    .mobMeun li a, .mobSubmeun li a{
+        text-decoration: none;
+        color: white;
+        font-size: 1.3rem;
+    }
+
+    .mobSubmeun{
+        display: none;
+        height: 50px;
+    }
+    .disBlock{
+        display: block;
+    }
+}
+        /*---main---------------*/
+        .deckMain{
+            display: flex;
+        }
+        .links {
+            font-size: .8rem;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: #000051;
+        }
+
+        .pro {
+            width: 50%;
+            height: 20%;
+            overflow: hidden;
+            border-radius: 5px;
+            /* border: 1px solid #000051; */
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .pro figure img {
+            width: 95%;
+            height: 400px;
+            object-fit: cover;
+            border: 1px solid #000051;
+        }
+
+        .smlImg {
+            width: 100%;
+            height: 100px;
+            border-radius: 5px;
+            padding: 2px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+
+        .smlImg li {
+            display: block;
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            border: 1px solid #000051;
+            margin: 5px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            cursor: pointer;
+        }
+
+        .smlImg li img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .intro h5 {
+            font-weight: normal;
+        }
+
+        .intro ul {
+            margin-bottom: 10px;
+        }
+
+        .intro li {
+            font-size: .8rem;
+            list-style: disc;
+            list-style-position: inside;
+        }
+
+        .intro .delet {
+            text-decoration: line-through;
+            display: inline;
+            color: gray;
+
+        }
+
+        .intro .special {
+            display: inline;
+            color: crimson;
+            margin-left: 3%;
+
+        }
+
+        .minus,
+        .plus {
+            border: 1px solid #000051;
+            border-radius: 2px;
+            color: #000051;
+            font-size: 1.8rem;
+            background: transparent;
+            margin: 10px;
+            cursor: pointer;
+            width: 10%;
+
+        }
+
+        .buy {
+            margin-top: 20px;
+            align-items: center;
+        }
+
+        .text_box {
+            width: 9%;
+            text-align: center;
+            font-family: "微軟正黑體";
+            border: none;
+        }
+        .submitInput{
+            border: 1px solid #000051;
+            border-radius: 2px;
+            color: #000051;
+            background: transparent;
+            height: 38px;
+            margin-left: 15px;
+            font-family: "微軟正黑體";
+            cursor: pointer;
+
+        }
+        .submitInput:hover{
+            background: #e5e5fd
+        }
+        .detail {
+            text-align: center;
+           
+        }
+        .detail h3{
+            border-bottom: 1px solid #000051;
+            width: 98px;
+            margin-left: calc( 50% - 49px);  
+            color: #000051;   
+            font-size: 1.5rem; 
+        }
+        .detail h5{
+            font-size: 1.3rem;
+            color: #510026; 
+        }
+        .detail ul{
+            color:#000051;
+            margin-bottom: 8%;
+        }
+        .products{
+            transition: .5s;
+        }
+        .products figure{
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            margin: 20px;
+        }
+        .products figure img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 1px solid transparent;
+        }
+
+.products p {
+    display: inline;
+    align-items: baseline;
+}
+.moreBtn{
+    width: 80%;
+    border: 1px solid #ccc;
+    background: transparent;
+    cursor: pointer;
+    color: #000051;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    font-family: "微軟正黑體";
+    margin: 20px auto;
+}
+       @media screen and (max-width:786px){
+           .links{
+               margin-left: 5px;
+           }
+           .deckMain{
+               flex-wrap: wrap;
+           }
+           .pro{
+               width: 100%;
+           }
+           .pro figure{
+               width: 80vw;
+               height: 80vw;
+               overflow: hidden;
+           }
+           .pro figure img{
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+           }
+           
+           .intro{
+               margin: 0 auto;
+               text-align: center;
+           }
+           .buy{
+               justify-content: center;
+           }
+           
+           
+           .detail h5{
+font-size: 1.1rem;
+           }
+           .products{
+               flex-wrap: wrap;
+           }
+           .products figure{
+               margin: 5px auto;
+           }
+       }
+
+        /*--footer-----------------------------------*/
+        footer {
+            height: 50px;
+            background: #000051;
+            width: 100%;
+            color: white;
+            font-size: 1rem;
+            line-height: 50px;
+        }
+        .gotop {
+            position: fixed;
+            bottom: 10%;
+            right: 4%;
+            cursor: pointer;
+        }
+        
+        .top {
+            color: #222272;
+            font-size: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="mobHidden">
+        <div class="container d-flex po-re">
+            <figure><a href="loadingPage.html"> <img src="images/logo.svg" alt="logo"></a></figure>
+            <h1><img src="images/logoName.png" alt=""></h1>
+            <ul class="d-flex po-ab">
+                <li><a href="home.html">首頁</a></li>
+                <li class="po-re active"><a href="product2.html">熱銷系列</a>
+                    <ul class="submeun">
+                        <li><a href="product2.html">新娘捧花<br>系列</a> </li>
+                        <li>永生花<br>系列</li>
+                    </ul>
+                </li>
+                <li><a href="#">活動課程</a></li>
+                <li><a href="about.html">關於繫縭</a></li>
+                <li><a href="#">購物車</a></li>
+                <li><a href="#">登入|註冊</a></li>
+            </ul>
+        </div>
+    </header>
+    <nav class="deckHidden">
+        <div class="mobNav d-flex">
+            <figure><a href="loadingPage.html"> <img src="images/logo.svg" alt="logo"></a></figure>
+            <button class="mobButton" id="mobButton"><i class="btn-fas fas fa-bars"></i></button>
+        </div>
+        <div class="mobContainer  po-re">
+            <ul class="mobMeun  po-ab">
+                <li><a href="home.html">首頁</a></li>
+                <li class="po-re" id="hotPro"><a href="product2.html">熱銷系列</a>
+                    <ul class="mobSubmeun">
+                        <li><a href="product2.html">新娘捧花系列</a> </li>
+                        <li><a href="#"> 永生花系列</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">活動課程</a></li>
+                <li><a href="about.html">關於繫縭</a></li>
+                <li><a href="#">購物車</a></li>
+                <li><a href="#">登入|註冊</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <p class="links">
+                <a href="product2.html">熱銷商品</a> > <a href="product2.html">新娘捧花系列</a>
+            </p>
+        </div>
+        <div class="container deckMain">
+            <div class="pro ">
+                <figure> <img id="replace" src="images/032.jpg" alt=""></figure>
+                <ul class="smlImg d-flex ">
+                    <li class="active"> <img src="images/030.jpg" alt=""></li>
+                    <li><img src="images/031.jpg" alt=""></li>
+                    <li><img src="images/030.jpg" alt=""></li>
+                    <li><img src="images/031.jpg" alt=""></li>
+
+                </ul>
+            </div>
+            <div class="intro">
+                <h2>藍色甜蜜捧花</h2>
+                <h3>商品描述</h3>
+                <h5>運用大量的進口永生花玫瑰與繡球<br>
+                    染色棉花點綴搭配多樣的豐富乾燥花材穿插其中<br>
+                    加上外層韓系大花束多層次的包裝<br>
+                    帶出花束的氣派份量感但又不失夢幻的告白氣勢<br>
+                    不一定是出現在男子告白場合、畢業季、生日都很適合<br>
+                    讓繫縭幫您親手製作一束具有永恆紀念的無敵大花束給心底重要的她 : )</h5>
+                <ul>
+                    <li>尺寸：約 40 x 60 cm</li>
+                    <li>乾燥花材與永生花可放置半年-1年以上</li>
+                    <li>具有永恆紀念價值</li>
+                    <li>可自挑花材與設計色系</li>
+                </ul>
+                <h4 class="delet">NT 3000</h4>
+                <h4 class="special">NT 2099</h4>
+                <div class="buy d-flex">
+                    <input class="minus" name="" type="button" value="-" />
+                    <input class="text_box" name="" type="text" value="0" />
+                    <input class="plus" name="" type="button" value="+" />
+                    <input class="submitInput" type="submit" name="submit" value="加入購物車">
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="detail container">
+        <h3 class="d-flex">商品細節</h3>
+        <div class="container">
+
+            <div>
+                <h5>運用大量的進口永生花玫瑰與繡球<br>
+                    染色棉花點綴搭配多樣的豐富乾燥花材穿插其中<br>
+                    加上外層韓系大花束多層次的包裝<br>
+                    帶出花束的氣派份量感但又不失夢幻的告白氣勢<br>
+                    不一定是出現在男子告白場合、畢業季、生日都很適合<br>
+                    讓繫縭幫您親手製作一束具有永恆紀念的無敵大花束給心底重要的她 : )</h5>
+                <ul>
+                    <li>尺寸：約 40 x 60 cm</li>
+                    <li>乾燥花材與永生花可放置半年-1年以上</li>
+                    <li>具有永恆紀念價值</li>
+                    <li>可自挑花材與設計色系</li>
+                </ul>
+            </div>
+
+
+        </div>
+        <h3 class="d-flex">相關商品</h3>
+        <div class="products d-flex">
+            <figure>
+                <img src="images/028.jpg" alt="">
+            </figure>
+            <figure>
+                <img src="images/033.jpg" alt="">
+            </figure>
+            <figure>
+                <img src="images/024.jpeg" alt="">
+            </figure>
+            <figure>
+                <img src="images/025.jpg" alt="">
+            </figure>
+
+        </div>
+        <button class="moreBtn">點我往下看更多</button>
+        <div class="products d-flex moreDetail d-none">
+            <figure>
+                <img src="images/031.jpg" alt="">
+            </figure>
+            <figure>
+                <img src="images/006.jpg" alt="">
+            </figure>
+            <figure>
+                <img src="images/028.jpg" alt="">
+            </figure>
+            <figure>
+                <img src="images/027.jpg" alt="">
+            </figure>
+
+        </div>
+        <div class="products d-flex moreDetail d-none">
+            <figure>
+                <img src="images/029.jpg" alt="">
+            </figure>
+            <figure>
+                <img src="images/004.jpg" alt="">
+            </figure>
+            <figure>
+                <img src="images/020.jpg" alt="">
+            </figure>
+            <figure>
+                <img src="images/013.jpg" alt="">
+            </figure>
+
+        </div>
+    </div>
+    <div class="gotop ">
+        <i class="top fas fa-arrow-alt-circle-up "></i></div>
+    <footer class="textalign">
+        Sabrina@2018copyright.
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+
+
+        $("#mobButton").on("click", function () {
+            $(".mobContainer").toggleClass("disBlock")
+        });
+
+        $(".mobContainer .mobMeun li").hover(function () {
+            $(this).css("background", "lightblue").siblings().css("background", "#000051")
+        });
+
+
+
+        $(".smlImg li").click(function () {
+            $(this).addClass("active").siblings().removeClass("active");
+            var picTarget = $(this).find("img").attr("src")
+            $("#replace").attr("src", picTarget);
+        });
+
+
+
+        $(".moreBtn").click(function () {
+            $(".moreDetail").removeClass("d-none"),
+                $(this).addClass("d-none"),
+                $(".moreDetail figure").addClass("animated fadeInUp ")
+        });
+
+
+
+        var num = $(".text_box");
+        $(".plus").on("click", function () {
+            num.val(parseInt(num.val()) + 1)
+        });
+
+        $(".minus").on("click", function () {
+            num.val(parseInt(num.val()) - 1)
+        });
+
+        $(".products figure").hover(function () {
+            $(this).css("border", "1px solid #000051").siblings().css("border", "1px solid transparent")
+        });
+        $(".gotop").click(function () {
+            $('html,body').animate({
+                scrollTop: 0
+            }, 400)
+        });
+    </script>
+</body>
+
+</html>

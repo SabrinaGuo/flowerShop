@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/vegas.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <title>繫縭花藝</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微軟正黑體";
+        }
+
+        @font-face {
+            font-family: "simsun.ttc";
+            src: url(font/simsun.ttc);
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 960px;
+        }
+
+        .textalign {
+            text-align: center;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .po-re {
+            position: relative;
+        }
+
+        .po-ab {
+            position: absolute;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .d_no {
+            display: none;
+        }
+
+        /*--header-----------------------------------*/
+        header {
+            height: 50px;
+        }
+
+        header li.active {
+            background: #000051;
+
+        }
+
+        header li.active a {
+            color: white;
+        }
+
+        header figure {
+            width: 50px;
+            height: 50px;
+            margin: 0;
+            padding: 0;
+        }
+
+        header figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* header h1 {
+            margin: 0;
+            line-height: 50px;
+            font-size: 1.5rem;
+            color: #000051;
+            font-family: "simsun.ttc";
+        } */
+        header h1 {
+            margin: 0;
+            padding: 0;
+            height: 50px;
+            overflow: hidden;
+            width: 100px;
+        }
+
+        header h1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        header ul {
+            right: 0;
+        }
+
+        header ul li {
+            display: flex;
+            align-items: center;
+            width: 80px;
+            height: 50px;
+            justify-content: center;
+        }
+
+        header ul li a {
+            text-decoration: none;
+            color: #000051;
+        }
+
+        header ul li:hover {
+            background: #000051;
+        }
+
+        header ul li:hover a {
+            color: white;
+        }
+
+        .submeun {
+            width: 100%;
+            position: absolute;
+            /*--li 是 position: relative--*/
+            background: #000051;
+            /* display: none; */
+            /*--因為block 無法使用transition 所以採用opacity--*/
+            transition: .2s;
+            opacity: 0;
+            max-height: 0;
+            /*--為了避免移動到其他位置時仍會跳出選單 故設定max height 讓高度消失--*/
+            overflow: hidden;
+            /*--為了讓超出的範圍隱藏--*/
+            top: 50px;
+            z-index: 99;
+        }
+
+        header li:hover .submeun {
+            /* display: block; */
+            opacity: 1;
+            max-height: 600px;
+            background: #4747b6;
+            /*--多大都可以 他會在內容結束後停止--*/
+        }
+
+        .submeun li {
+            font-size: .8rem;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .login_bg {
+            width: 100vw;
+            height: 100vh;
+            /* background: rgba(255, 255, 255, 0.9); */
+            position: relative;
+            z-index: 100;
+        }
+
+        .login_area {
+            border: 1px double #000051;
+            border-radius: 10px;
+            box-shadow: 5px 5px 20px #8b8787;
+            position: fixed;
+            top: 25%;
+            left: 20%;
+            width: 60%;
+            height: 70%;
+            background: #fff;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .bgFig {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            opacity: .3;
+        }
+
+        .notyetAccount,
+        .notyetLogin {
+            position: absolute;
+            width: 40%;
+            font-size: 1.5rem;
+            text-align: center;
+
+        }
+
+        .notyetAccount {
+            top: 30%;
+            left: 0;
+        }
+
+        .notyetLogin {
+            top: 30%;
+            right: 0;
+        }
+
+        .notyetAccount button,
+        .notyetLogin button {
+            width: 40%;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            border-radius: 8px;
+            background: #000051;
+            color: #fff;
+            border: none;
+
+        }
+
+        .notyetAccount button:hover,
+        .notyetLogin button:hover {
+            background: #010186;
+
+        }
+
+        .moveBox {
+            position: absolute;
+            top: -13%;
+            border: 1px double #fff;
+            background: #000051;
+            width: 45%;
+            height: 110%;
+            margin: 3%;
+            vertical-align: middle;
+            transform: translateX(50%);
+            transition: .4s;
+        }
+
+        .login {
+            position: absolute;
+            top: 9%;
+            height: 60%;
+            width: 100%;
+            text-align: center;
+            transition: .4s;
+        }
+
+        .register {
+            position: absolute;
+            top: 9%;
+            width: 100%;
+            height: 60%;
+            text-align: center;
+            display: none;
+            transition: .4s ease-in-out
+        }
+
+        hr {
+            width: 90%;
+        }
+
+        .login input,
+        .register input {
+            width: 60%;
+            margin: 3%;
+        }
+
+        .loForm,
+        .reForm {
+            height: 50%;
+            margin-top: 10%;
+            text-align: right;
+            width: 80%;
+        }
+
+        .login h2,
+        .login h3,
+        .register h2,
+        .register h3 {
+            padding-left: 3%;
+            display: inline;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .btnArea {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 25%;
+
+        }
+
+        .btnArea button {
+            border-radius: 5px;
+            width: 30%;
+            height: 30px;
+            border: none;
+
+        }
+
+        /*--main-----------------------------------*/
+        .slidercontent {
+            animation: autoPlay 2s;
+        }
+
+        /* @keyframes autoPlay {
+            from {
+                width: 500px
+            }
+
+            to {
+                width: 3200px
+            }
+        } */
+
+        .sliderwrapper {
+            margin-top: 10px;
+        }
+
+        .sliderwrapper .container {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            width: 800px;
+        }
+
+        .touch-l,
+        .touch-r {
+            top: 0;
+            z-index: 99;
+            width: 50px;
+            height: 500px;
+            background: rgba(225, 225, 225, .3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .touch-r {
+            right: 0;
+        }
+
+        .touch-l:hover,
+        .touch-r:hover {
+            background: rgba(225, 225, 225, .5);
+        }
+
+        .angle {
+            font-size: 3rem;
+            color: #000051;
+        }
+
+        .slidercontent {
+            left: 0;
+        }
+
+        .pages {
+            display: flex;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        .slidercontent,
+        .pages {
+            margin: 0;
+            padding: 0;
+            transition: .5s;
+        }
+
+        .slidercontent li {
+            list-style: none;
+            width: 800px;
+            height: 600px;
+        }
+
+        .slidercontent li img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pages li {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #000051;
+            margin: 5px;
+            cursor: pointer;
+
+        }
+
+        .productcontent {
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+        }
+
+        .productcontent .container {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .content div {
+            width: 45%;
+            height: 250px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .margLeft {
+            margin-left: 5%;
+        }
+
+        .productcontent .border {
+            width: 30%;
+            /* height: 25%; */
+            /* flex-wrap: wrap; */
+            /* background: #000051; */
+            box-sizing: border-box;
+            padding: 5px;
+            border: 1px solid #000051;
+            border-radius: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .productcontent img {
+            width: 95%;
+            height: 95%;
+            display: block;
+            object-fit: cover;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+
+        .textstyle {
+            text-align: center;
+            line-height: 100px;
+            /* background: rgba(0, 0, 81, .3) */
+        }
+
+
+
+        .productcontent p {
+            font-size: 1.3rem;
+            color: #000051;
+            margin: 0;
+
+        }
+
+        .productcontent a {
+            text-decoration: none;
+            color: #c50263;
+            font-size: 1.8rem;
+            display: block;
+            text-align: left;
+            cursor: pointer;
+
+        }
+
+        .content h5 {
+            text-align: right;
+            font-weight: normal;
+            font-size: 1.8rem;
+            margin: 0;
+            color: #c50263;
+        }
+
+        .logosite {
+            justify-content: space-around;
+            align-items: center;
+
+        }
+
+        .logosite img {
+            margin: 50px 30px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .logosite p {
+            font-size: 1.3rem;
+        }
+
+
+
+
+        /*--footer-----------------------------------*/
+        footer {
+            width: 100%;
+            height: 50px;
+            background: #000051;
+            width: 100%;
+            color: white;
+            font-size: 1rem;
+            line-height: 50px;
+        }
+
+        .gotop {
+            position: fixed;
+            bottom: 10%;
+            right: 4%;
+            cursor: pointer;
+        }
+
+        .top {
+            color: #222272;
+            font-size: 3rem;
+        }
+
+        /*--RWD-----------------------------------*/
+
+        .deckHidden {
+            display: none;
+        }
+
+        .mobslider {
+            display: none;
+        }
+
+        @media screen and (max-width:768px) {
+            .sliderwrapper {
+                display: none;
+            }
+
+            .mobslider {
+                display: block;
+                width: 100vw;
+                height: 60vw;
+            }
+
+            .mobContainer {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            .mobHidden {
+                display: none;
+            }
+
+            .deckHidden {
+                display: block;
+            }
+
+            .mobNav {
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .mobButton {
+                width: 50px;
+                height: 50px;
+                background: #000051;
+                border: none;
+                border-radius: 5px;
+                margin-right: 10px;
+            }
+
+            .deckHidden figure {
+                height: 10%;
+                width: 300px;
+                overflow: hidden;
+                margin: 0;
+                padding: 0;
+            }
+
+            .deckHidden figure img {
+                width: 25%;
+                height: 25%;
+                object-fit: cover;
+            }
+
+            .btn-fas {
+                color: white;
+                font-size: 2rem;
+            }
+
+            .mobContainer {
+                z-index: 9999;
+                display: none;
+            }
+
+            .mobMeun {
+                background: #000051;
+                width: 100%;
+            }
+
+            .mobMeun li {
+                line-height: 3rem;
+                text-align: center;
+                border-bottom: 1px solid white;
+            }
+
+            .mobMeun li a,
+            .mobSubmeun li a {
+                text-decoration: none;
+                color: white;
+                font-size: 1.3rem;
+            }
+
+            .mobSubmeun {
+                display: none;
+                height: 50px;
+            }
+
+            .disBlock {
+                display: block;
+            }
+
+            .sliderwrapper .container {
+                height: 300px;
+                position: relative;
+                overflow: hidden;
+                margin: 0 auto;
+                width: 500px;
+            }
+
+            .slidercontent li {
+                list-style: none;
+                width: 500px;
+                height: 300px;
+            }
+
+            .touch-l,
+            .touch-r {
+
+                height: 300px;
+
+            }
+
+            .content {
+                flex-direction: column;
+                justify-content: center;
+                margin: 0;
+            }
+
+            .content h5 {
+                text-align: center;
+                font-weight: normal;
+                font-size: 1.5rem;
+            }
+
+
+            .logosite p {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            .logosite {
+                flex-direction: column;
+
+            }
+
+            .logosite img {
+                margin: 50px 30px;
+                width: 100px;
+                height: 100px;
+            }
+
+            .container {
+                /* width: 700px; */
+                margin: 0 auto;
+            }
+
+            .margLeft {
+                margin: 0;
+            }
+
+            .textstyle {
+                margin: 0 auto;
+            }
+
+            .textstyle a {
+                font-size: 1.5rem;
+                margin: 0;
+                text-align: center;
+
+            }
+
+            .textstyle p {
+                font-size: 1.2rem;
+                margin: 0;
+            }
+
+            .productcontent .border {
+                margin: 0 auto;
+                width: 60vw;
+                height: 60vw;
+                overflow: hidden;
+                margin-bottom: 30px;
+
+            }
+
+            .content div {
+                height: 200px;
+            }
+
+            /* footer {
+                width: 100%;
+
+            } */
+        }
+
+        ;
+    </style>
+</head>
+
+<body>
+
+    <header class="mobHidden">
+        <div class="container d-flex po-re">
+            <figure><a href="loadingPage.html"> <img src="images/logo.svg" alt="logo"></a></figure>
+            <h1><img src="images/logoName.png" alt=""></h1>
+            <ul class="d-flex po-ab">
+                <li class="active"><a href="home.html">首頁</a></li>
+                <li class="po-re "><a href="product2.html">熱銷系列</a>
+                    <ul class="submeun">
+                        <li><a href="product2.html">新娘捧花<br>系列</a> </li>
+                        <li>永生花<br>系列</li>
+                    </ul>
+                </li>
+                <li><a href="#">活動課程</a></li>
+                <li><a href="about.html">關於繫縭</a></li>
+                <li><a href="#">購物車</a></li>
+                <li id="login_bg"><a href="#login_bg">登入|註冊</a></li>
+            </ul>
+        </div>
+        <div class="login_bg">
+            <div class="login_area">
+                <figure class="bgFig">
+                    <img src="images/008.jpg" alt=""></figure>
+                <div class="notyetAccount">
+                    <h3>尚未有帳號嗎?</h3>
+                    <button id="regBtn">註冊</button>
+                </div>
+                <div class="notyetLogin">
+                    <h3>有帳號嗎?</h3>
+                    <button id="loBtn">登入</button>
+                </div>
+                <div class="moveBox">
+                    <div class="login">
+                        <h2>登入</h2>
+                        <hr>
+                        <form id="loForm" class="loForm" action="">
+                            <h3>帳號</h3>
+                            <input type="text" value="" placeholder="exsample@mail.com"></br>
+                            <h3>密碼</h3><input type="password" name="" id="" value="">
+
+                        </form>
+                        <div class="btnArea">
+                            <button>登入</button>
+                            <button>取消</button>
+                        </div>
+                    </div>
+                    <div class="register">
+                        <h2>註冊</h2>
+                        <hr>
+
+                        <form id="reForm" class="reForm" action="">
+                            <h3>帳號</h3><input type="text" value=""></br>
+                            <h3>輸入密碼</h3><input type="password" name="" id="" value=""></br>
+                            <h3>再次輸入</h3><input type="password" name="" id="" value=""></br>
+
+                        </form>
+                        <div class="btnArea">
+                            <button>註冊</button>
+                            <button>取消</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+    <nav class="deckHidden">
+        <div class="mobNav d-flex">
+            <figure><a href="loadingPage.html"> <img src="images/logo.svg" alt="logo"></a></figure>
+            <button class="mobButton" id="mobButton"><i class="btn-fas fas fa-bars"></i></button>
+        </div>
+        <div class="mobContainer  po-re">
+            <ul class="mobMeun  po-ab">
+                <li><a href="home.html">首頁</a></li>
+                <li class="po-re" id="hotPro"><a href="product2.html">熱銷系列</a>
+                    <ul class="mobSubmeun">
+                        <li><a href="product2.html">新娘捧花系列</a> </li>
+                        <li><a href="#"> 永生花系列</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">活動課程</a></li>
+                <li><a href="about.html">關於繫縭</a></li>
+                <li><a href="#">購物車</a></li>
+                <li><a href="#">登入|註冊</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="sliderwrapper">
+            <div class="container po-re">
+                <div class="touch-l po-ab" id="prev"><i class="angle fas fa-angle-left"></i></div>
+                <div class="touch-r po-ab" id="next"><i class="angle fas fa-angle-right"></i></div>
+                <ul class="slidercontent d-flex po-ab">
+                    <li><a href="#"><img src="images/006.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/024.jpeg" alt=""></a></li>
+                    <li><a href="#"><img src="images/030.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="images/037.jpg" alt=""></a></li>
+                </ul>
+                <ul class="pages po-ab">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mobslider">
+
+        </div>
+        <div class=" productcontent ">
+            <div class=" item1 content container d-flex ">
+
+                <div class="item1 textstyle ">
+                    <p> 親手製作的幸福</p>
+                    <a href="">
+                        <h5>新娘捧花系列</h5>
+                    </a>
+                </div>
+
+                <div class="item1 border margLeft d-flex"><img src="images/032.jpg" alt=""></div>
+
+                <div class="item2 border d-flex"><img src="images/028.jpg" alt=""></div>
+                <div class="item2 margLeft textstyle "> <a href="">永生花系列</a>
+                    <p>象徵不凋的愛情</p>
+                </div>
+
+
+                <div class="item3 textstyle ">
+                    <p> 親手製作的幸福</p>
+                    <a href="">
+                        <h5>新娘捧花系列</h5>
+                    </a>
+                </div>
+
+                <div class="item3 border margLeft d-flex"><img src="images/018.gif" alt=""></div>
+
+                <div class="item4 border d-flex"><img src="images/022.jpg" alt=""></div>
+                <div class="item4 margLeft textstyle "> <a href="">永生花系列</a>
+                    <p>象徵不凋的愛情</p>
+                </div>
+
+
+                <div class="item5 textstyle ">
+                    <p> 親手製作的幸福</p>
+                    <a href="">
+                        <h5>新娘捧花系列</h5>
+                    </a>
+                </div>
+
+                <div class="item5 border margLeft d-flex"><img src="images/033.jpg" alt=""></div>
+
+                <div class="item6 border d-flex"><img src="images/025.jpg" alt=""></div>
+                <div class="item6 margLeft textstyle "> <a href="">永生花系列</a>
+                    <p>象徵不凋的愛情</p>
+                </div>
+
+
+            </div>
+            <!-- <div>
+                <div class="container logosite d-flex">
+                    <img src="images/logo-web.svg" alt="">
+                    <p>繫你所繫<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;縭而結兮</p>
+                </div>
+            </div> -->
+        </div>
+
+
+    </main>
+    <div class="gotop ">
+        <i class="top fas fa-arrow-alt-circle-up "></i></div>
+    <footer class="textalign">
+        Sabrina@2018copyright.
+
+
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="js/vegas.min.js"></script>
+
+
+    <script>
+
+        $(".mobslider").vegas({
+            delay: 4000,
+            timer: false,
+            transition: 'fade',
+            slides: [
+                { src: "images/006.jpg" },
+                { src: "images/024.jpeg" },
+                { src: "images/030.jpg" },
+                { src: "images/037.jpg" }
+            ]
+        });
+
+    </script>
+    <script>
+
+        var sliderNo = 0;
+        var sliderWidth = 800;
+        var sliderArray = ["006.jpg", "024.jpeg", "030.jpg", "037.jpg"];
+        var sliderCount = sliderArray.length
+
+        for ($i = 0; $i < sliderCount; $i++) {
+            $("#sliderId").append(`<li><img src="images/${sliderArray[$i]}" alt=""></li>`)
+            $("#pagesId").append(`<li></li>`)
+        }
+
+        $(".pages li").first().css("background", "white")
+
+        $("#prev").click(function () {
+            sliderNo = sliderNo - 1
+            if (sliderNo < 0) sliderNo = sliderCount - 1
+            $(".slidercontent").css("left", (0 - sliderNo * sliderWidth))
+            $(".pages li").eq(sliderNo).css("background", "white")
+                .siblings().css("background", "#000051");
+
+        });
+        $("#next").click(function () {
+            sliderNo = sliderNo + 1
+            if (sliderNo >= sliderCount) sliderNo = 0
+            $(".slidercontent").css("left", (0 - sliderNo * sliderWidth))
+            $(".pages li").eq(sliderNo).css("background", "white")
+                .siblings().css("background", "#000051");
+        });
+
+
+        $(".pages li").hover(function () {
+            // console.log("456")
+            sliderNo = $(this).index();
+            $(".slidercontent").css("left", (0 - sliderNo * sliderWidth))
+            $(this).css("background", "white")
+                .siblings().css("background", "#000051");
+        });
+        $("#mobButton").on("click", function () {
+            $(".mobContainer").toggleClass("disBlock")
+        });
+        $(".mobContainer .mobMeun li").hover(function () {
+            $(this).css("background", "lightblue").siblings().css("background", "#000051")
+        });
+        $(".gotop").click(function () {
+            $('html,body').animate({
+                scrollTop: 0
+            }, 400)
+        });
+
+    </script>
+
+
+    <script>
+        var moveBox = $('.moveBox');
+        var regBtn = $('#regBtn');
+        var loBtn = $('#loBtn');
+        var login = $('.login');
+        var register = $('.register');
+        var login_bg = $('.login_bg');
+
+        login_bg.hide();
+        login.show();
+        register.hide();
+
+        $('#login_bg').click(function () {
+            login_bg.fadeToggle();
+
+        })
+        regBtn.on('click', function () {
+            register.fadeIn();
+            login.fadeOut();
+            moveBox.css('transform', 'translateX(-60%)');
+
+        })
+        loBtn.on('click', function () {
+            console.log("ooo");
+            login.fadeIn();
+            register.fadeOut();
+            moveBox.css('transform', 'translateX(50%)');
+        })
+
+    </script>
+    <script>
+        $(window).scroll(function () {
+            var scrollTop = $(this).scrollTop();
+            var windowH = $(this).height();
+            var height = $("body").height();
+
+            console.log(windowH);
+            console.log(height);
+            console.log(scrollTop);
+
+            if (scrollTop > 70) {
+                $('.item1').addClass('animated 1 slideInRight');
+            }
+            if (scrollTop > 300) {
+                $('.item2').addClass('animated 1 slideInLeft');
+            }
+            if (scrollTop > 500) {
+                $('.item3').addClass('animated 1 slideInRight');
+            }
+            if (scrollTop > 700) {
+                $('.item4').addClass('animated 1 slideInLeft');
+            }
+            if (scrollTop > 900) {
+                $('.item5').addClass('animated 1 slideInRight');
+            }
+            if (scrollTop > 1100) {
+                $('.item6').addClass('animated 1 slideInLeft');
+            }
+
+        });
+    </script>
+</body>
+
+</html>
