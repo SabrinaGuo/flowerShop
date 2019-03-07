@@ -172,6 +172,13 @@
             z-index: 100;
         }
 
+        .coverBox {
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 8;
+        }
+
         .login_area {
             border: 1px double #000051;
             border-radius: 10px;
@@ -185,7 +192,7 @@
             margin: 0 auto;
             display: flex;
             justify-content: center;
-
+            z-index: 10;
         }
 
         .bgFig {
@@ -739,6 +746,7 @@
             </ul>
         </div>
         <div class="login_bg">
+            <div class="coverBox" id="coverBox"></div>
             <div class="login_area">
                 <figure class="bgFig">
                     <img src="images/008.jpg" alt=""></figure>
@@ -977,6 +985,7 @@
         var login = $('.login');
         var register = $('.register');
         var login_bg = $('.login_bg');
+        var coverBox = $('#coverBox');
 
         login_bg.hide();
         login.show();
@@ -984,8 +993,10 @@
 
         $('#login_bg').click(function () {
             login_bg.fadeToggle();
-
         })
+        coverBox.click(function () {
+            login_bg.fadeOut();
+        });
         regBtn.on('click', function () {
             register.fadeIn();
             login.fadeOut();
