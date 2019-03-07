@@ -875,6 +875,10 @@
         $("#mobButton").on("click", function () {
             $(".mobContainer").toggleClass("disBlock")
         });
+        $(".mobContainer").find('li').click(function () {
+            $(".mobContainer").toggleClass("disBlock")
+
+        });
 
         $(".mobContainer .mobMeun li").hover(function () {
             $(this).css("background", "lightblue").siblings().css("background", "#000051")

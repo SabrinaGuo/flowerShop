@@ -812,8 +812,56 @@
                 <li><a href="#">活動課程</a></li>
                 <li><a href="about.html">關於繫縭</a></li>
                 <li><a href="#">購物車</a></li>
-                <li><a href="#">登入|註冊</a></li>
+                <li id="login_bg"><a href="#login_bg">登入|註冊</a></li>
             </ul>
+        </div>
+        <div class="login_bg">
+            <div class="coverBox" id="coverBox"></div>
+            <div class="login_area">
+                <figure class="bgFig">
+                    <img src="images/008.jpg" alt=""></figure>
+                <div class="notyetAccount">
+                    <h3>尚未有帳號嗎?</h3>
+                    <button id="regBtn">註冊</button>
+                </div>
+                <div class="notyetLogin">
+                    <h3>有帳號嗎?</h3>
+                    <button id="loBtn">登入</button>
+                </div>
+                <div class="moveBox">
+                    <div class="login">
+                        <h2>登入</h2>
+                        <hr>
+                        <form id="loForm" class="loForm" action="">
+                            <h3>帳號</h3>
+                            <input type="text" value="" placeholder="exsample@mail.com"></br>
+                            <h3>密碼</h3><input type="password" name="" id="" value="">
+
+                        </form>
+                        <div class="btnArea">
+                            <button>登入</button>
+                            <button>取消</button>
+                        </div>
+                    </div>
+                    <div class="register">
+                        <h2>註冊</h2>
+                        <hr>
+
+                        <form id="reForm" class="reForm" action="">
+                            <h3>帳號</h3><input type="text" value=""></br>
+                            <h3>輸入密碼</h3><input type="password" name="" id="" value=""></br>
+                            <h3>再次輸入</h3><input type="password" name="" id="" value=""></br>
+
+                        </form>
+                        <div class="btnArea">
+                            <button>註冊</button>
+                            <button>取消</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
     </nav>
 
@@ -965,6 +1013,10 @@
         });
         $("#mobButton").on("click", function () {
             $(".mobContainer").toggleClass("disBlock")
+        });
+        $(".mobContainer").find('li').click(function () {
+            $(".mobContainer").toggleClass("disBlock")
+
         });
         $(".mobContainer .mobMeun li").hover(function () {
             $(this).css("background", "lightblue").siblings().css("background", "#000051")
